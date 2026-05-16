@@ -1,15 +1,12 @@
 import { useStore } from './store';
-import { shallow } from 'zustand/shallow';
 
 export const SubmitButton = () => {
-  const { nodes, edges } = useStore(
-    (state) => ({ nodes: state.nodes, edges: state.edges }),
-    shallow
-  );
+  const nodes = useStore((state) => state.nodes);
+  const edges = useStore((state) => state.edges);
 
   const handleSubmit = async () => {
     try {
-      const res = await fetch('http://localhost:8000/pipelines/parse', {
+      const res = await fetch('https://studious-succotash-qr6qwv4jw9pfgx4-8000.app.github.dev/pipelines/parse', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ nodes, edges }),

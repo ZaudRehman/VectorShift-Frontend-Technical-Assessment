@@ -10,7 +10,7 @@ export const DraggableNode = ({ type, label, color = '#6366f1' }) => {
     <div
       draggable
       onDragStart={(e) => onDragStart(e, type)}
-      onDragEnd={(e) => (e.target.style.opacity = '1')}
+      onDragEnd={(e) => (e.currentTarget.style.opacity = '1')}
       onDragStartCapture={(e) => (e.currentTarget.style.opacity = '0.7')}
       style={{
         padding: '7px 12px',
@@ -36,7 +36,16 @@ export const DraggableNode = ({ type, label, color = '#6366f1' }) => {
         e.currentTarget.style.transform = 'translateX(0)';
       }}
     >
-      <span style={{ width: 8, height: 8, borderRadius: '50%', background: color, display: 'inline-block', flexShrink: 0 }} />
+      <span
+        style={{
+          width: 8,
+          height: 8,
+          borderRadius: '50%',
+          background: color,
+          display: 'inline-block',
+          flexShrink: 0,
+        }}
+      />
       {label}
     </div>
   );
