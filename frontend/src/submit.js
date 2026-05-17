@@ -30,43 +30,40 @@ export const SubmitButton = () => {
   };
 
   return (
-    <div
+    <button
+      onClick={handleSubmit}
       style={{
-        display: 'flex',
-        justifyContent: 'center',
-        padding: '14px 0 10px',
-        background: '#181825',
-        borderTop: '1px solid #313244',
+        background: 'linear-gradient(145deg, #f8faff, #e4eaf4)',
+        color: '#5d6780',
+        border: 'none',
+        borderRadius: 999,
+        padding: '14px 28px',
+        fontWeight: 700,
+        fontSize: 14,
+        letterSpacing: '0.02em',
+        cursor: 'pointer',
+        boxShadow:
+          '8px 8px 18px rgba(207, 214, 228, 0.85), -8px -8px 18px rgba(255,255,255,0.95)',
+        transition: 'all 0.18s ease',
+      }}
+      onMouseEnter={(e) => {
+        e.currentTarget.style.transform = 'translateY(-1px)';
+      }}
+      onMouseLeave={(e) => {
+        e.currentTarget.style.transform = 'translateY(0)';
+      }}
+      onMouseDown={(e) => {
+        e.currentTarget.style.boxShadow =
+          'inset 4px 4px 8px rgba(207, 214, 228, 0.9), inset -4px -4px 8px rgba(255,255,255,0.95)';
+        e.currentTarget.style.transform = 'scale(0.985)';
+      }}
+      onMouseUp={(e) => {
+        e.currentTarget.style.boxShadow =
+          '8px 8px 18px rgba(207, 214, 228, 0.85), -8px -8px 18px rgba(255,255,255,0.95)';
+        e.currentTarget.style.transform = 'translateY(-1px)';
       }}
     >
-      <button
-        onClick={handleSubmit}
-        style={{
-          background: 'linear-gradient(135deg, #6366f1 0%, #a855f7 100%)',
-          color: '#fff',
-          border: 'none',
-          borderRadius: 8,
-          padding: '10px 36px',
-          fontWeight: 700,
-          fontSize: 13,
-          letterSpacing: '0.04em',
-          cursor: 'pointer',
-          boxShadow: '0 4px 18px #6366f144',
-          transition: 'transform 0.1s ease, box-shadow 0.1s ease',
-        }}
-        onMouseEnter={(e) => {
-          e.target.style.boxShadow = '0 6px 24px #6366f166';
-          e.target.style.transform = 'translateY(-1px)';
-        }}
-        onMouseLeave={(e) => {
-          e.target.style.boxShadow = '0 4px 18px #6366f144';
-          e.target.style.transform = 'translateY(0)';
-        }}
-        onMouseDown={(e) => (e.target.style.transform = 'scale(0.97)')}
-        onMouseUp={(e) => (e.target.style.transform = 'scale(1)')}
-      >
-        Submit Pipeline
-      </button>
-    </div>
+      Run Pipeline
+    </button>
   );
 };

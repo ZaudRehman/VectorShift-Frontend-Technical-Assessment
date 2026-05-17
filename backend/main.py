@@ -7,7 +7,10 @@ app = FastAPI()
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["http://localhost:3000"],
+    allow_origins=[
+        "http://localhost:3000",
+        "https://studious-succotash-qr6qwv4jw9pfgx4-3000.app.github.dev",
+    ],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
@@ -25,7 +28,6 @@ class Pipeline(BaseModel):
     edges: List[Edge]
 
 def is_dag(nodes: List[Node], edges: List[Edge]) -> bool:
-    """DFS-based cycle detection using tri-color marking (WHITE=0, GRAY=1, BLACK=2)."""
     graph: dict[str, list[str]] = {node.id: [] for node in nodes}
     for edge in edges:
         if edge.source in graph:
@@ -38,7 +40,7 @@ def is_dag(nodes: List[Node], edges: List[Edge]) -> bool:
         color[v] = GRAY
         for neighbor in graph.get(v, []):
             if color.get(neighbor) == GRAY:
-                return False  # back edge found → cycle
+                return False
             if color.get(neighbor, WHITE) == WHITE:
                 if not dfs(neighbor):
                     return False

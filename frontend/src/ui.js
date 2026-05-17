@@ -75,7 +75,12 @@ export const PipelineUI = () => {
   return (
     <div
       ref={reactFlowWrapper}
-      style={{ flex: 1, height: '100%', background: '#11111b' }}
+      style={{
+        flex: 1,
+        height: '100%',
+        background: 'transparent',
+        borderRadius: 28,
+      }}
     >
       <ReactFlow
         nodes={nodes}
@@ -93,44 +98,37 @@ export const PipelineUI = () => {
         defaultEdgeOptions={{
           type: 'smoothstep',
           animated: true,
-          style: { stroke: '#6366f1', strokeWidth: 2 },
+          style: { stroke: '#a8b8ff', strokeWidth: 3 },
         }}
         fitView
       >
-        <Controls
-          style={{
-            background: '#1e1e2e',
-            border: '1px solid #313244',
-            borderRadius: 8,
-          }}
-        />
+        <Controls />
         <MiniMap
           nodeColor={(n) => {
             const colorMap = {
-              customInput: '#89b4fa',
-              customOutput: '#a6e3a1',
-              llm: '#cba6f7',
-              text: '#f38ba8',
-              api: '#fab387',
-              condition: '#eba0ac',
-              transform: '#b4befe',
-              math: '#94e2d5',
-              note: '#f9e2af',
+              customInput: '#b7dcff',
+              customOutput: '#bdeccf',
+              llm: '#d8c7ff',
+              text: '#f7c6d9',
+              api: '#ffd6ba',
+              condition: '#f3c7ce',
+              transform: '#cfd3ff',
+              math: '#bfe9e1',
+              note: '#f7e8b2',
             };
-            return colorMap[n.type] || '#6366f1';
+            return colorMap[n.type] || '#b8b5ff';
           }}
           style={{
-            background: '#181825',
-            border: '1px solid #313244',
-            borderRadius: 8,
+            background: '#eef1f6',
+            borderRadius: 18,
           }}
-          maskColor="#11111b88"
+          maskColor="#e7ecf577"
         />
         <Background
           variant={BackgroundVariant.Dots}
-          gap={20}
-          size={1}
-          color="#313244"
+          gap={22}
+          size={1.4}
+          color="#cfd6e4"
         />
       </ReactFlow>
     </div>

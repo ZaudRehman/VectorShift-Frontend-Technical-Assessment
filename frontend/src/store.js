@@ -42,7 +42,7 @@ export const useStore = create((set, get) => ({
           type: 'smoothstep',
           animated: true,
           markerEnd: { type: MarkerType.ArrowClosed, height: '16px', width: '16px' },
-          style: { stroke: '#6366f1', strokeWidth: 2 },
+          style: { stroke: '#a8b8ff', strokeWidth: 3 },
         },
         get().edges
       ),
